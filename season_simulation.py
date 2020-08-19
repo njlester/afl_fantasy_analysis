@@ -148,7 +148,7 @@ class Player():
         self.standard_deviation = numpy.std(self.scores)
 
     def __repr__(self):
-        return self.name + ' - ' + str(self.wins) + ' Wins ' + str(self.draws) + ' Draws ' + str(self.losses) + ' Losses ' + str(self.percent()) + '%'
+        return self.name.zfill(7) + ' - ' + str(self.ladder_points()).zfill(2) + ' ' + str(self.wins).zfill(2) + ' ' + str(self.draws).zfill(2) + ' ' + str(self.losses).zfill(2) + ' ' + str(round(self.percent(), 2)) + '%'
 
     def __gt__(self, other):
         """ Determines which player is higher on the ladder """
