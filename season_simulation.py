@@ -19,6 +19,12 @@ class League():
         self.player_13 = Player(name='Nick', wins=4, losses=7, draws=0, scores=[872,865,746,675,785,865,848,785,825,804,827], points_against=9156)
         self.player_14 = Player(name='Noah', wins=6, losses=5, draws=0, scores=[814,952,826,840,931,981,772,769,787,945,864], points_against=9266)
 
+    def __repr__(self):
+        output = ''
+        for pos,player in self.ladder().items():
+            output += str(pos).zfill(2) + ' ' + player.__repr__() + '\n'
+        return output
+
     def simulate_match(self, player_1, player_2, knockout=False):
         """ Simulates a match between two players. Returns the winner followed by the loser """
         player_1_score = player_1.sample()
