@@ -152,8 +152,8 @@ class Player():
 
     def __gt__(self, other):
         """ Determines which player is higher on the ladder """
-        points_1 = 4 * self.wins + 2 * self.draws
-        points_2 = 4 * other.wins + 2 * other.draws
+        points_1 = self.ladder_points()
+        points_2 = other.ladder_points()
         if points_1 > points_2:
             return True
         elif points_1 < points_2:
@@ -163,6 +163,10 @@ class Player():
                 return True
             else:
                 return False
+
+    def ladder_points(self):
+        """ Calculate a players ladder points """
+        return 4 * self.wins + 2 * self.draws
 
     def sample(self):
         """ Generates a weekly score from a Normal Distribution using a players mean and standard deviation """
