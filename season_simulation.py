@@ -33,7 +33,7 @@ class League():
         elif player_1_score < player_2_score:
             winner = player_2
             loser = player_1
-        else: # Draw
+        elif knockout == True:
             if player_1 > player_2:
                 winner = player_1
                 loser = player_2
@@ -41,7 +41,9 @@ class League():
                 winner = player_2
                 loser = player_1
             else: # Draw with the exact same percentage. Should use points for as the next decider but raises an error for now
-                raise Exception(player_1 + ' and ' + player_2 + ' could not be separated')
+                raise Exception(player_1.name + ' and ' + player_2.name + ' could not be separated')
+        else: # Draw
+            return None, None
         return winner, loser
 
     def update_ladder(self, player_1, player_1_score, player_2, player_2_score):
@@ -169,7 +171,7 @@ class Player():
 
     def percent(self):
         """ Calculates a players percentage """
-        return sum(self.scores) / self.points_against
+        return 100 * sum(self.scores) / self.points_against
 
 def generate_probabilities(samples):
     league = League()
