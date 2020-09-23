@@ -108,8 +108,8 @@ class League():
         winner_4, loser_4 = self.simulate_match(player_1=ladder[6], player_2=ladder[7], knockout=True)
 
         # Finals Week 2
-        winner_5, loser_5 = self.simulate_match(player_1=loser_1, player_2=winner_4, knockout=True)
-        winner_6, loser_6 = self.simulate_match(player_1=loser_2, player_2=winner_3, knockout=True)
+        winner_5, loser_5 = self.simulate_match(player_1=loser_1, player_2=winner_3, knockout=True)
+        winner_6, loser_6 = self.simulate_match(player_1=loser_2, player_2=winner_4, knockout=True)
 
         # Finals Week 3
         winner_7, loser_7 = self.simulate_match(player_1=winner_1, player_2=winner_6, knockout=True)
