@@ -99,7 +99,7 @@ class League():
         self.simulate_match(player_1=self.player_4, player_2=self.player_2)
 
     def simulate_finals_week_1(self):
-        # Finals Week 1
+        """ Simulates the Week 1 finals matchups """
         ladder = self.ladder()
         winner_1, loser_1 = self.simulate_match(player_1=ladder[1], player_2=ladder[4], knockout=True)
         winner_2, loser_2 = self.simulate_match(player_1=ladder[2], player_2=ladder[3], knockout=True)
@@ -108,19 +108,19 @@ class League():
         return winner_1, winner_2, winner_3, winner_4, loser_1, loser_2, loser_3, loser_4
 
     def simulate_finals_week_2(self, winner_3, winner_4, loser_1, loser_2):
-        # Finals Week 2
+        """ Simulates the Semi Final matchups """
         winner_5, loser_5 = self.simulate_match(player_1=loser_1, player_2=winner_3, knockout=True)
         winner_6, loser_6 = self.simulate_match(player_1=loser_2, player_2=winner_4, knockout=True)
         return winner_5, winner_6, loser_5, loser_6
 
     def simulate_finals_week_3(self, winner_1, winner_2, winner_5, winner_6):
-        # Finals Week 3
+        """ Simulates the Preliminary Final matchups """
         winner_7, loser_7 = self.simulate_match(player_1=winner_1, player_2=winner_6, knockout=True)
         winner_8, loser_8 = self.simulate_match(player_1=winner_2, player_2=winner_5, knockout=True)
         return winner_7, winner_8, loser_7, loser_8
 
     def simulate_finals_week_4(self, winner_7, winner_8):
-        # Grand Final
+        """ Simulates the Grand Final matchup """
         winner, runner_up = self.simulate_match(player_1=winner_7, player_2=winner_8, knockout=True)
         return winner, runner_up
 
@@ -199,6 +199,7 @@ class Player():
         return 100 * self.points_for / self.points_against
 
 def generate_probabilities(samples):
+    """ Generates the probability of each player finishing in each ladder position and the probability of each player winning the grand final """
     league = League()
     players = league.players()
     for player in players:
@@ -234,6 +235,7 @@ def generate_probabilities(samples):
             writer.writerow([player, first_percent, second_percent])
 
 def simulate_matchup(player_1, player_2, samples):
+    """ Simulates a single matchup between two players """
     player_1_wins = 0
     player_2_wins = 0
     draws = 0
