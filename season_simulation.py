@@ -233,5 +233,30 @@ def generate_probabilities(samples):
             second_percent = 100 * runner_ups[player] / samples
             writer.writerow([player, first_percent, second_percent])
 
+def simulate_matchup(player_1, player_2, samples):
+    player_1_wins = 0
+    player_2_wins = 0
+    draws = 0
+
+    print(player_1.name.zfill(7), 'Mean:', round(player_1.mean, 2), 'SD:', round(player_1.standard_deviation,2))
+    print(player_2.name.zfill(7), 'Mean:', round(player_2.mean, 2), 'SD:', round(player_2.standard_deviation,2))
+
+    for i in range(samples):
+        print(str(round(100 * i / samples)) + '%', end='\r')
+        league = League()
+        winner, loser = league.simulate_match(player_1=player_1, player_2=player_2, knockout=False)
+        if winner == player_1:
+            player_1_wins += 1
+        elif winner == player_2:
+            player_2_wins += 1
+        else:
+            draws += 1
+    print(player_1.name, 100 * player_1_wins / samples)
+    print(player_2.name, 100 * player_2_wins / samples)
+    print('Draw', 100 * draws / samples)
+
 if __name__ == '__main__':
-    generate_probabilities(samples=10000)
+    # generate_probabilities(samples=10000)
+
+    league = League()
+    simulate_matchup(player_1=league.player_14, player_2=league.player_9, samples=10000)
