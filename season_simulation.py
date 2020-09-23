@@ -4,20 +4,20 @@ import csv
 class League():
     def __init__(self):
         """ Initialises the league. Currently all of the players and their variables are hardcoded """
-        self.player_1 = Player(name='Anthony', wins=5, losses=7, draws=0, scores=[765,801,821,901,832,817,797,828,893,809,896,814], points_against=10175)
-        self.player_2 = Player(name='Ben', wins=3, losses=9, draws=0, scores=[821,735,738,789,875,559,905,848,733,640,865,790], points_against=10302)
-        self.player_3 = Player(name='Daniel', wins=6, losses=6, draws=0, scores=[852,911,900,879,884,771,999,1086,798,1019,909,871], points_against=10378)
-        self.player_4 = Player(name='Henry', wins=6, losses=6, draws=0, scores=[879,916,767,764,783,834,838,796,782,778,1020,996], points_against=10290)
-        self.player_5 = Player(name='Jacob', wins=10, losses=2, draws=0, scores=[928,836,743,820,857,870,878,942,833,838,813,901], points_against=9511)
-        self.player_6 = Player(name='Jarrod', wins=9, losses=3, draws=0, scores=[681,979,891,870,773,828,862,838,851,857,942,975], points_against=9354)
-        self.player_7 = Player(name='Joshua', wins=5, losses=7, draws=0, scores=[852,835,817,915,793,748,892,817,787,873,924,869], points_against=10026)
-        self.player_8 = Player(name='Jules', wins=2, losses=10, draws=0, scores=[523,747,822,547,823,752,784,713,864,715,904,867], points_against=10204)
-        self.player_9 = Player(name='Luke', wins=9, losses=3, draws=0, scores=[948,905,862,761,880,782,775,873,877,831,686,994], points_against=10054)
-        self.player_10 = Player(name='Matt', wins=6, losses=6, draws=0, scores=[865,865,875,855,816,776,824,816,870,828,784,758], points_against=10102)
-        self.player_11 = Player(name='Nathan', wins=6, losses=6, draws=0, scores=[830,800,786,977,821,775,870,688,905,877,854,847], points_against=9849)
-        self.player_12 = Player(name='Ned', wins=6, losses=6, draws=0, scores=[660,889,816,760,831,895,815,943,972,682,877,820], points_against=9900)
-        self.player_13 = Player(name='Nick', wins=4, losses=8, draws=0, scores=[872,865,746,675,785,865,848,785,825,804,827,851], points_against=10134)
-        self.player_14 = Player(name='Noah', wins=7, losses=5, draws=0, scores=[814,952,826,840,931,981,772,769,787,945,864,978], points_against=10117)
+        self.player_1 = Player(name='Anthony', wins=5, losses=7, draws=0, points_for=9974, points_against=10175, scores=[765,801,821,901,832,817,797,828,893,809,896,814])
+        self.player_2 = Player(name='Ben', wins=3, losses=9, draws=0, points_for=9298, points_against=10302, scores=[821,735,738,789,875,559,905,848,733,640,865,790])
+        self.player_3 = Player(name='Daniel', wins=6, losses=6, draws=0, points_for=10879, points_against=10378, scores=[852,911,900,879,884,771,999,1086,798,1019,909,871])
+        self.player_4 = Player(name='Henry', wins=6, losses=6, draws=0, points_for=10153, points_against=10290, scores=[879,916,767,764,783,834,838,796,782,778,1020,996])
+        self.player_5 = Player(name='Jacob', wins=10, losses=2, draws=0, points_for=10259, points_against=9511, scores=[928,836,743,820,857,870,878,942,833,838,813,901])
+        self.player_6 = Player(name='Jarrod', wins=9, losses=3, draws=0, points_for=10347, points_against=9354, scores=[681,979,891,870,773,828,862,838,851,857,942,975])
+        self.player_7 = Player(name='Joshua', wins=5, losses=7, draws=0, points_for=10122, points_against=10026, scores=[852,835,817,915,793,748,892,817,787,873,924,869])
+        self.player_8 = Player(name='Jules', wins=2, losses=10, draws=0, points_for=9061, points_against=10204, scores=[523,747,822,547,823,752,784,713,864,715,904,867])
+        self.player_9 = Player(name='Luke', wins=9, losses=3, draws=0, points_for=10174, points_against=10054, scores=[948,905,862,761,880,782,775,873,877,831,686,994])
+        self.player_10 = Player(name='Matt', wins=6, losses=6, draws=0, points_for=9932, points_against=10102, scores=[865,865,875,855,816,776,824,816,870,828,784,758])
+        self.player_11 = Player(name='Nathan', wins=6, losses=6, draws=0, points_for=10030, points_against=9849, scores=[830,800,786,977,821,775,870,688,905,877,854,847])
+        self.player_12 = Player(name='Ned', wins=6, losses=6, draws=0, points_for=9960, points_against=9900, scores=[660,889,816,760,831,895,815,943,972,682,877,820])
+        self.player_13 = Player(name='Nick', wins=4, losses=8, draws=0, points_for=9748, points_against=10134, scores=[872,865,746,675,785,865,848,785,825,804,827,851])
+        self.player_14 = Player(name='Noah', wins=7, losses=5, draws=0, points_for=10459, points_against=10117, scores=[814,952,826,840,931,981,772,769,787,945,864,978])
 
     def __repr__(self):
         output = ''
@@ -54,8 +54,8 @@ class League():
 
     def update_ladder(self, player_1, player_1_score, player_2, player_2_score):
         """ Updates the league ladder """
-        player_1.scores.append(player_1_score)
-        player_2.scores.append(player_2_score)
+        player_1.points_for += player_1_score
+        player_2.points_for += player_2_score
         player_1.points_against += player_2_score
         player_2.points_against += player_1_score
         if player_1_score > player_2_score:
@@ -141,16 +141,17 @@ class League():
         return players
 
 class Player():
-    def __init__(self, name, wins, losses, draws, scores, points_against):
+    def __init__(self, name, wins, losses, draws, points_for, points_against, scores):
         """ Initialises a player and all required variables """
         self.name = name
         self.wins = wins
         self.losses = losses
         self.draws = draws
-        self.scores = scores
+        self.points_for = points_for
         self.points_against = points_against
+        self.scores = scores
 
-        self.mean = sum(self.scores) / sum([self.wins, self.losses, self.draws])
+        self.mean = sum(self.scores) / len(self.scores)
         self.standard_deviation = numpy.std(self.scores)
 
     def __repr__(self):
@@ -181,7 +182,7 @@ class Player():
 
     def percent(self):
         """ Calculates a players percentage """
-        return 100 * sum(self.scores) / self.points_against
+        return 100 * self.points_for / self.points_against
 
 def generate_probabilities(samples):
     league = League()
