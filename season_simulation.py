@@ -4,20 +4,20 @@ import csv
 class League():
     def __init__(self):
         """ Initialises the league. Currently all of the players and their variables are hardcoded """
-        self.player_1 = Player(name='Anthony', wins=5, losses=7, draws=0, points_for=10944, points_against=11158, scores=[765,801,821,901,832,817,797,828,893,809,896,814,970])
-        self.player_2 = Player(name='Ben', wins=3, losses=9, draws=0, points_for=9983, points_against=11173, scores=[821,735,738,789,875,559,905,848,733,640,865,790,685])
-        self.player_3 = Player(name='Daniel', wins=6, losses=6, draws=0, points_for=11771, points_against=11080, scores=[852,911,900,879,884,771,999,1086,798,1019,909,871,892])
-        self.player_4 = Player(name='Henry', wins=6, losses=6, draws=0, points_for=10982, points_against=11019, scores=[879,916,767,764,783,834,838,796,782,778,1020,996,829])
-        self.player_5 = Player(name='Jacob', wins=10, losses=2, draws=0, points_for=10961, points_against=10403, scores=[928,836,743,820,857,870,878,942,833,838,813,901,702])
-        self.player_6 = Player(name='Jarrod', wins=9, losses=3, draws=0, points_for=11299, points_against=10135, scores=[681,979,891,870,773,828,862,838,851,857,942,975,952])
-        self.player_7 = Player(name='Joshua', wins=5, losses=7, draws=0, points_for=10851, points_against=10855, scores=[852,835,817,915,793,748,892,817,787,873,924,869,729])
-        self.player_8 = Player(name='Jules', wins=2, losses=10, draws=0, points_for=10044, points_against=11174, scores=[523,747,822,547,823,752,784,713,864,715,904,867,983])
-        self.player_9 = Player(name='Luke', wins=9, losses=3, draws=0, points_for=11045, points_against=10739, scores=[948,905,862,761,880,782,775,873,877,831,686,994,871])
-        self.player_10 = Player(name='Matt', wins=6, losses=6, draws=0, points_for=10713, points_against=11054, scores=[865,865,875,855,816,776,824,816,870,828,784,758,781])
-        self.player_11 = Player(name='Nathan', wins=6, losses=6, draws=0, points_for=10850, points_against=10691, scores=[830,800,786,977,821,775,870,688,905,877,854,847,820])
-        self.player_12 = Player(name='Ned', wins=6, losses=6, draws=0, points_for=10963, points_against=10943, scores=[660,889,816,760,831,895,815,943,972,682,877,820,1003])
-        self.player_13 = Player(name='Nick', wins=4, losses=8, draws=0, points_for=10590, points_against=10954, scores=[872,865,746,675,785,865,848,785,825,804,827,851,842])
-        self.player_14 = Player(name='Noah', wins=7, losses=5, draws=0, points_for=11502, points_against=11120, scores=[814,952,826,840,931,981,772,769,787,945,864,978,1043])
+        self.player_1 = Player(name='Anthony', wins=6, losses=8, draws=0, points_for=11852, points_against=12030, scores=[765,801,821,901,832,817,797,828,893,809,896,814,970,908])
+        self.player_2 = Player(name='Ben', wins=3, losses=11, draws=0, points_for=10664, points_against=11946, scores=[821,735,738,789,875,559,905,848,733,640,865,790,685,681])
+        self.player_3 = Player(name='Daniel', wins=8, losses=6, draws=0, points_for=12779, points_against=11914, scores=[852,911,900,879,884,771,999,1086,798,1019,909,871,892,1008])
+        self.player_4 = Player(name='Henry', wins=8, losses=6, draws=0, points_for=11755, points_against=11700, scores=[879,916,767,764,783,834,838,796,782,778,1020,996,829,773])
+        self.player_5 = Player(name='Jacob', wins=10, losses=4, draws=0, points_for=11786, points_against=11275, scores=[928,836,743,820,857,870,878,942,833,838,813,901,702,825])
+        self.player_6 = Player(name='Jarrod', wins=10, losses=4, draws=0, points_for=11988, points_against=10983, scores=[681,979,891,870,773,828,862,838,851,857,942,975,952,689])
+        self.player_7 = Player(name='Joshua', wins=5, losses=9, draws=0, points_for=11723, points_against=11763, scores=[852,835,817,915,793,748,892,817,787,873,924,869,729,872])
+        self.player_8 = Player(name='Jules', wins=4, losses=10, draws=0, points_for=10892, points_against=11863, scores=[523,747,822,547,823,752,784,713,864,715,904,867,983,848])
+        self.player_9 = Player(name='Luke', wins=11, losses=3, draws=0, points_for=11992, points_against=11419, scores=[948,905,862,761,880,782,775,873,877,831,686,994,871,947])
+        self.player_10 = Player(name='Matt', wins=6, losses=8, draws=0, points_for=11547, points_against=12062, scores=[865,865,875,855,816,776,824,816,870,828,784,758,781,834])
+        self.player_11 = Player(name='Nathan', wins=6, losses=8, draws=0, points_for=11736, points_against=11724, scores=[830,800,786,977,821,775,870,688,905,877,854,847,820,886])
+        self.player_12 = Player(name='Ned', wins=7, losses=7, draws=0, points_for=11996, points_against=11829, scores=[660,889,816,760,831,895,815,943,972,682,877,820,1003,1033])
+        self.player_13 = Player(name='Nick', wins=5, losses=9, draws=0, points_for=11270, points_against=11901, scores=[872,865,746,675,785,865,848,785,825,804,827,851,842,680])
+        self.player_14 = Player(name='Noah', wins=9, losses=5, draws=0, points_for=12374, points_against=11945, scores=[814,952,826,840,931,981,772,769,787,945,864,978,1043,872])
 
     def __repr__(self):
         output = ''
@@ -136,7 +136,7 @@ class League():
         """ Simulates the remainder of the season """
         # self.simulate_round_12()
         # self.simulate_round_13()
-        self.simulate_round_14()
+        # self.simulate_round_14()
         winner, runner_up = self.simulate_finals()
         return winner, runner_up
 
