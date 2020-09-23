@@ -98,25 +98,38 @@ class League():
         self.simulate_match(player_1=self.player_13, player_2=self.player_9)
         self.simulate_match(player_1=self.player_4, player_2=self.player_2)
 
-    def simulate_finals(self):
-        """ Simulates all finals games and returns the winner and runner up """
+    def simulate_finals_week_1(self):
         # Finals Week 1
         ladder = self.ladder()
         winner_1, loser_1 = self.simulate_match(player_1=ladder[1], player_2=ladder[4], knockout=True)
         winner_2, loser_2 = self.simulate_match(player_1=ladder[2], player_2=ladder[3], knockout=True)
         winner_3, loser_3 = self.simulate_match(player_1=ladder[5], player_2=ladder[8], knockout=True)
         winner_4, loser_4 = self.simulate_match(player_1=ladder[6], player_2=ladder[7], knockout=True)
+        return winner_1, winner_2, winner_3, winner_4, loser_1, loser_2, loser_3, loser_4
 
+    def simulate_finals_week_2(self, winner_3, winner_4, loser_1, loser_2):
         # Finals Week 2
         winner_5, loser_5 = self.simulate_match(player_1=loser_1, player_2=winner_3, knockout=True)
         winner_6, loser_6 = self.simulate_match(player_1=loser_2, player_2=winner_4, knockout=True)
+        return winner_5, winner_6, loser_5, loser_6
 
+    def simulate_finals_week_3(self, winner_1, winner_2, winner_5, winner_6):
         # Finals Week 3
         winner_7, loser_7 = self.simulate_match(player_1=winner_1, player_2=winner_6, knockout=True)
         winner_8, loser_8 = self.simulate_match(player_1=winner_2, player_2=winner_5, knockout=True)
+        return winner_7, winner_8, loser_7, loser_8
 
+    def simulate_finals_week_4(self, winner_7, winner_8):
         # Grand Final
         winner, runner_up = self.simulate_match(player_1=winner_7, player_2=winner_8, knockout=True)
+        return winner, runner_up
+
+    def simulate_finals(self):
+        """ Simulates all finals games and returns the winner and runner up """
+        winner_1, winner_2, winner_3, winner_4, loser_1, loser_2, loser_3, loser_4 = self.simulate_finals_week_1()
+        winner_5, winner_6, loser_5, loser_6 = self.simulate_finals_week_2(winner_3=winner_3, winner_4=winner_4, loser_1=loser_1, loser_2=loser_2)
+        winner_7, winner_8, loser_7, loser_8 = self.simulate_finals_week_3(winner_1=winner_1, winner_2=winner_2, winner_5=winner_5, winner_6=winner_6)
+        winner, runner_up = self.simulate_finals_week_4(winner_7=winner_7, winner_8=winner_8)
         return winner, runner_up
 
     def simulate_season(self):
