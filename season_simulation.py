@@ -187,6 +187,8 @@ class Player():
 def generate_probabilities(samples):
     league = League()
     players = league.players()
+    for player in players:
+        print(player.name.zfill(7), 'Mean:', round(player.mean, 2), 'SD:', round(player.standard_deviation,2))
     ladder_positions = {player.name: {n + 1: 0 for n in range(14)} for player in players}
     winners = {player.name: 0 for player in players}
     runner_ups = {player.name: 0 for player in players}
