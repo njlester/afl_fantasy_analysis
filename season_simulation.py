@@ -126,18 +126,17 @@ class League():
 
     def simulate_finals(self):
         """ Simulates all finals games and returns the winner and runner up """
-        ladder = self.ladder()
-        # winner_1, winner_2, winner_3, winner_4, loser_1, loser_2, loser_3, loser_4 = self.simulate_finals_week_1()
-        # winner_5, winner_6, loser_5, loser_6 = self.simulate_finals_week_2(winner_3=ladder[5], winner_4=ladder[7], loser_1=ladder[1], loser_2=ladder[3])
-        # winner_7, winner_8, loser_7, loser_8 = self.simulate_finals_week_3(winner_1=ladder[4], winner_2=ladder[2], winner_5=ladder[1], winner_6=ladder[7])
-        winner, runner_up = self.simulate_finals_week_4(winner_7=ladder[4], winner_8=ladder[1])
+        winner_1, winner_2, winner_3, winner_4, loser_1, loser_2, loser_3, loser_4 = self.simulate_finals_week_1()
+        winner_5, winner_6, loser_5, loser_6 = self.simulate_finals_week_2(winner_3=winner_3, winner_4=winner_4, loser_1=loser_1, loser_2=loser_2)
+        winner_7, winner_8, loser_7, loser_8 = self.simulate_finals_week_3(winner_1=winner_1, winner_2=winner_2, winner_5=winner_5, winner_6=winner_6)
+        winner, runner_up = self.simulate_finals_week_4(winner_7=winner_7, winner_8=winner_8)
         return winner, runner_up
 
     def simulate_season(self):
         """ Simulates the remainder of the season """
-        # self.simulate_round_12()
-        # self.simulate_round_13()
-        # self.simulate_round_14()
+        self.simulate_round_12()
+        self.simulate_round_13()
+        self.simulate_round_14()
         winner, runner_up = self.simulate_finals()
         return winner, runner_up
 
@@ -258,7 +257,7 @@ def simulate_matchup(player_1, player_2, samples):
     print('Draw', 100 * draws / samples)
 
 if __name__ == '__main__':
-    # generate_probabilities(samples=10000)
+    generate_probabilities(samples=10000)
 
-    league = League()
-    simulate_matchup(player_1=league.player_14, player_2=league.player_9, samples=10000)
+    # league = League()
+    # simulate_matchup(player_1=league.player_14, player_2=league.player_9, samples=10000)
