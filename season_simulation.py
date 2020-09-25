@@ -46,8 +46,8 @@ class League():
             elif player_1 < player_2:
                 winner = player_2
                 loser = player_1
-            else: # Draw with the exact same percentage. Should use points for as the next decider but raises an error for now
-                raise Exception(player_1.name + ' and ' + player_2.name + ' could not be separated')
+            else: # Draw with the exact same percentage
+                raise Exception(player_1.name + ' and ' + player_2.name + ' could not be separated') # Should use points for as the next decider but currently raises an error
         else: # Draw
             return None, None
         return winner, loser
